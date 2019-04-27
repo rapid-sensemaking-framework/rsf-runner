@@ -1,0 +1,17 @@
+{
+  "name": "rsf-runner",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "rfs-reader-writer": "^1.0.1",
+    "shelljs": "^0.8.3"
+  }
+}
