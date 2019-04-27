@@ -12,7 +12,7 @@ An example:
         "version": "10.15.1",
         "dependencies_file": {
             "dependencies": {
-                "rsf-reader-writer": "^0.0.1"
+                "rsf-reader-writer": "^0.0.2"
             }
         },
         "code_file": "const { readInput, writeOutput } = require('rsf-reader-writer');const input = readInput(__dirname);const result = input.reduce((memo, val) => memo + val, 0);writeOutput(__dirname, {max_time: 30000, prompt: `hi, please offer up to ${result} ideas`, max_responses: result, participants_config: [{ id: '+12223334444', name: 'Person Lastname', type: 'phone' }]});"
@@ -24,7 +24,7 @@ An example:
         "version": "10.15.1",
         "dependencies_file": {
             "dependencies": {
-                "rsf-collect-responses": "^0.0.23"
+                "rsf-collect-responses": "^0.0.25"
             }
         },
         "code_file": "require('rsf-collect-responses').main(__dirname)"

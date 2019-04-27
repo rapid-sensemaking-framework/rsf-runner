@@ -1,10 +1,10 @@
-// SEQUENCE RUNNER!
+// RSF-SEQUENCE RUNNER!
 
 require('dotenv').config()
 const fs = require('fs')
 const path = require('path')
 
-const { INPUT_FILE_NAME, OUTPUT_FILE_NAME } = require('rfs-reader-writer')
+const { INPUT_FILE_NAME, OUTPUT_FILE_NAME, readInput, writeOutput } = require('rfs-reader-writer')
 
 // use a bash command helper like shelljs
 const shell = require('shelljs')
@@ -87,13 +87,18 @@ const runOperator = (sequence, index, input) => {
         runOperator(sequence, index + 1, output)
     } else {
         // otherwise store the results
-        fs.writeFileSync(path.join(__dirname, OUTPUT_FILE_NAME), JSON.stringify(output))
+        writeOutput(__dirname, output)
     }
 }
 
 
 // read in sequence file
-const sequenceToRun = require('./sequence.1.json')
+const sequenceName = process.argv[2]
+if (!sequenceName) {
+    console.log('Please pass a path to an rsf-sequence JSON file as an argument to this command')
+    process.exit(1)
+}
+const sequenceToRun = require(sequenceName)
 const checkValid = validateSequence(sequenceToRun)
 if (!checkValid.valid) {
     console.log('Invalid sequence, exiting. Message:')
@@ -102,7 +107,7 @@ if (!checkValid.valid) {
 }
 
 const initialIndex = 0
-const initialInput = [3]
+const initialInput = readInput(__dirname)
 runOperator(sequenceToRun, initialIndex, initialInput)
 // exit
 

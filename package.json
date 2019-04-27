@@ -1,17 +1,22 @@
 {
   "name": "rsf-runner",
   "version": "0.0.1",
-  "description": "",
+  "description": "the high level process runner that can consume sequences of rsf-operators and gather and save final results",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.js ./sequence.json",
+    "start-example": "node index.js ./example-sequence.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/rapid-sensemaking-framework/rsf-runner.git"
+  },
   "license": "GPL-3.0",
   "dependencies": {
     "dotenv": "^7.0.0",
-    "rfs-reader-writer": "^1.0.1",
+    "rsf-reader-writer": "^0.0.2",
     "shelljs": "^0.8.3"
   }
 }
