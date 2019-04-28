@@ -38,6 +38,28 @@ The basic tenets are
 
 Apart from a few integrations, such as ones that Loomio has with Slack, these platforms require participants to join a new platform, and familiarize with a new tool. The RSF assumes the opposite, and brings the conversation to an already familiar space to participants: a chat platform they're already using. The process designer can even specify different people as reachable on DIFFERENT platforms, and the process can still be conducted.
 
+## Non-technical Overview
+At the moment, no graphical user interface exists for the configuration process. Until one does, let's paint a picture of what that would be like.
+
+For any good "conversation", there is always a frame. The conversation, at least loosely, has a direction that the people who will participate in it are agreeable to and interested in.
+
+So someone who has a frame for a conversation, and wants to foster engagement pulls from a selection of available recipes for a social process, and stitches them together into a beautifully crafted flow. Things that this person would be tuning could include amount of time available for each part of the process.
+
+Once they draft the flow, they setup either an opt-in process where participants will select themselves, or if they have verbal or written consent via a personal connection, they could input each participant. To input a participant just requires adding the relevant info for the contact method they want to connect via, such as email, text, or something else.
+
+Different stages of a process could have different participants. A different group might be included as the 'ideation' group than the 'evaluation' group.
+
+Finally, kickoff the process...
+
+Ideally, a live dashboard of events taking place in the process, and results coming in would be viewable, and even options for people playing facilitator type roles to add the human touch of fostering the social intelligence, and getting to great outcomes.
+
+## Principles
+
+The tools should offer participants in processes as much transparency into the process as makes sense for the use case. In most cases, all the participants should have the results of the entire process, rather than constrict the results to the facilitator. The process should benefit everyone.
+
+## Technical Overview
+
+
 ## RSF Operators
 
 ## RSF Sequences
