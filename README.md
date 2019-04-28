@@ -62,7 +62,25 @@ Once every step of the process has completed, the final results will be saved to
 The tools should offer participants in processes as much transparency into the process as makes sense for the use case. In most cases, all the participants should have the results of the entire process, rather than constrict the results to the facilitator. The process should benefit everyone.
 
 ## Technical Overview
+The rsf-runner consumes a JSON file, which will be described in [RSF Operators](#rsf-operators).
 
+The JSON file describes a sequence, where each step in the sequence has inputs and outputs.
+The only expectation is that each step in the sequence read an input as JSON from a known file, and write the final
+output to a JSON file with a known name when it's done.
+
+The properties of the output of each step in the sequence should match the properties required
+as the input for the next step in the sequence.
+
+The rsf-runner has been defined flexibly enough that technically different steps in the sequence could be written
+in different languages, as long as they read JSON inputs and write JSON outputs. JSON is a nice portable data format for this.
+
+Each step in the sequence is run as a child process (as in thread process) to the main sequence which is unfolding. In other words, each step on its own would be runnable from the command line, but instead is being initiated by this process, which is then the 'parent' process (process as in thread process). The parent process is listening/waiting for the child process to exit, at which point (if it was successful) it will read the results of that process back in, which have been written to the filesystem temporarily as a JSON file.
+
+With those results, it will either pass them as an input into the next step in the process, or, if it was the last step, it will write them to a `output.json` file in the main folder in which this was run. 
+
+This `output.json` is where the final results can be found.
+
+The input for the initial operator in the sequence should be written into an `input.json` file which is sitting in the root directory in which the main process is being run.
 
 ## RSF Operators
 
