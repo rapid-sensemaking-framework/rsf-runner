@@ -111,6 +111,8 @@ Operators are called operators because they perform operations. These operations
 
 An operator can do whatever it takes to ingest and coordinate this human input, which will very likely involve standing up web servers, and other connection/protocol variants.
 
+If writing an operator in `node`, a convenience library has been written, called [rsf-reader-writer](https://github.com/rapid-sensemaking-framework/rsf-reader-writer). Check it out for its super simple API for reading the input and writing the output.
+
 
 **Todos**
 - [ ] validate that the languages (and their versions) specified in a sequence JSON file are all present on the device, and available in the PATH, before running the sequence
