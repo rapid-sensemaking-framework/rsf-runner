@@ -84,6 +84,18 @@ The input for the initial operator in the sequence should be written into an `in
 
 ## RSF Operators
 
+Operators are called operators because they perform operations. These operations can either be very quick, just performing a very simple transformation on data, requiring no human input, or they can involve lots of human input, and be medium to long running operations, meaning they could take days or weeks.
+
+An operator can do whatever it takes to ingest and coordinate this human input, which will very likely involve standing up web servers, and other connection/protocol variants.
+
+At the time of writing, two operators of interest have been developed, that are easily made to be compatible with one another.
+- [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses)
+    - for a prompt, collect statements numbering up to a given maximum from a list of participants
+- [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each)
+    - for a list/array of statements, collect a response or vote (from a limited number of valid options) for each from a list of participants
+
+If writing an operator in `node`, a convenience library has been written, called [rsf-reader-writer](https://github.com/rapid-sensemaking-framework/rsf-reader-writer). Check it out for its super simple API for reading the input and writing the output.
+
 RSF Operators are modules that can be run from the command line, that follow a certain pattern of reading a file with a specific name `input.json` as an input, running as long as it needs to transform that input into a desired output, and then writing that output to a JSON file with a specific name `output.json`, and exiting the process. At the fundamentals, that is it. Obviously, infinitely diverse functionality can be written that adheres to those simple principles. The only requirements are a file system and the ability to run a process thread.
 
 The idea is that each operator should clearly define what properties or values it expects from the JSON input,
@@ -106,13 +118,6 @@ in order to be compatible to run properly in the `rsf-runner` sequence runner.
 `dependencies_file`: `String | Object`, the full data required to specify dependencies for the code file. In node this is `package.json` data, rust this is `Cargo.toml` data, etc.
 
 `code_file`: `String`, the actual code representing the primary logic of the operator. Can rely heavily on dependency imports. Gets written to a file, then run.
-
-Operators are called operators because they perform operations. These operations can either be very quick, just performing a very simple transformation on data, requiring no human input, or they can be involve lots of human input, and be medium to long running operations, meaning they could take days or weeks.
-
-An operator can do whatever it takes to ingest and coordinate this human input, which will very likely involve standing up web servers, and other connection/protocol variants.
-
-If writing an operator in `node`, a convenience library has been written, called [rsf-reader-writer](https://github.com/rapid-sensemaking-framework/rsf-reader-writer). Check it out for its super simple API for reading the input and writing the output.
-
 
 **Todos**
 - [ ] validate that the languages (and their versions) specified in a sequence JSON file are all present on the device, and available in the PATH, before running the sequence
