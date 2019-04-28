@@ -84,9 +84,39 @@ The input for the initial operator in the sequence should be written into an `in
 
 ## RSF Operators
 
+RSF Operators are modules that can be run from the command line, that follow a certain pattern of reading a file with a specific name `input.json` as an input, running as long as it needs to transform that input into a desired output, and then writing that output to a JSON file with a specific name `output.json`, and exiting the process. At the fundamentals, that is it. Obviously, infinitely diverse functionality can be written that adheres to those simple principles. The only requirements are a file system and the ability to run a process thread.
+
+The idea is that each operator should clearly define what properties or values it expects from the JSON input,
+and what properties or values it returns as the JSON output, if its successful.
+
+By doing so, RSF Operators can build up as a library over time, and where outputs of one operator match the inputs of another,
+those operators can be strung together into an RSF Sequence. They could start to be combined in many different orders and in many different ways.
+
+An RSF Operator will be written into an RSF Sequence JSON file. It should have the following properties
+in order to be compatible to run properly in the `rsf-runner` sequence runner.
+
+`id`: `String`, an identifying string for this operator, should contain no spaces, use hyphens or camelCase to separate words
+
+`description`: `String`, should describe at a high level what this module does. meant for reading by humans
+
+`language`: `String`, which language is this operator implemented in. Supported languages so far: `node`, `rust`
+
+`version`: `String`, which version of the language does this require
+
+`dependencies_file`: `String | Object`, the full data required to specify dependencies for the code file. In node this is `package.json` data, rust this is `Cargo.toml` data, etc.
+
+`code_file`: `String`, the actual code representing the primary logic of the operator. Can rely heavily on dependency imports. Gets written to a file, then run.
+
+
+**Todos**
+- [ ] validate that the languages (and their versions) specified in a sequence JSON file are all present on the device, and available in the PATH, before running the sequence
+
+
 ## RSF Sequences
 
+
 ## RSF Contactables
+
 
 ## How To Use
 
