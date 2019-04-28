@@ -107,6 +107,10 @@ in order to be compatible to run properly in the `rsf-runner` sequence runner.
 
 `code_file`: `String`, the actual code representing the primary logic of the operator. Can rely heavily on dependency imports. Gets written to a file, then run.
 
+Operators are called operators because they perform operations. These operations can either be very quick, just performing a very simple transformation on data, requiring no human input, or they can be involve lots of human input, and be medium to long running operations, meaning they could take days or weeks.
+
+An operator can do whatever it takes to ingest and coordinate this human input, which will very likely involve standing up web servers, and other connection/protocol variants.
+
 
 **Todos**
 - [ ] validate that the languages (and their versions) specified in a sequence JSON file are all present on the device, and available in the PATH, before running the sequence
