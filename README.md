@@ -131,7 +131,7 @@ As an example, here is the JSON for a `node` based operator, that takes in an ar
 and outputs a configuration suitable for consumption by [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses).
 
 ```json
-{
+    {
         "id": "addup-configure-collect-responses",
         "description": "Add numbers in an array and produce an rsf-collect-responses configuration",
         "language": "node",
@@ -181,6 +181,70 @@ See the full example in [example-sequence.json](./example-sequence.json).
 
 ## RSF Sequences
 
+Sequences are called sequences because they are a series of Operators placed into a specific order, and the order is important.
+
+While you could technically create a sequence of one and only one Operator, those will be the less interesting of the use cases than ones that string many operators together into a longer flow. Even Operators implemented in different languages are able to be strung together.
+
+An RSF Sequence is encoded into a JSON file, making it super portable, savable, and shareable. It is simply an array of RSF Operator JSON objects. The following is an example with abbreviations, the full copy of which can be seen in [example-sequence.json](./example-sequence.json).
+
+```json
+[
+    {
+        "id": "addup-configure-collect-responses",
+        "description": "Add numbers in an array and produce an rsf-collect-responses configuration",
+        ...
+        "contract": {
+            ...
+            "gives": {
+                "max_time": "number",
+                "prompt": "string",
+                "max_responses": "number",
+                "participants_config": [{
+                    "id": "string",
+                    "name": "string",
+                    "type": "string"
+                }]
+            }
+        },
+        "code_file": "const { readInput, writeOutput } = require('rsf-reader-writer');const input = readInput(__dirname);const result = input.reduce((memo, val) => memo + val, 0);writeOutput(__dirname, {max_time: 30000, prompt: `hi, please offer up to ${result} ideas`, max_responses: result, participants_config: [{ id: '+12223334444', name: 'Somebody Lastname', type: 'phone' }]});"
+    },
+    {
+        "id": "rsf-collect-responses",
+        "description": "Gather input from people based on a prompt",
+        ...
+        "contract": {
+            "needs": {
+                "max_time": "number",
+                "prompt": "string",
+                "max_responses": "number",
+                "participants_config": [{
+                    "id": "string",
+                    "name": "string",
+                    "type": "string"
+                }]
+            },
+            ...
+        },
+        "code_file": "require('rsf-collect-responses').main(__dirname)"
+    }
+]
+```
+
+It is especially important the `contract.gives` property of one Operator, matches the `contract.needs` property of the following Operator, identically.
+
+In order to run a sequence, the file should be sitting in the filesystem on your computer where you also have the code for `rsf-runner` sitting. To boot it, assuming the file name is `sequence.json` (and its in the same folder as rsf-runner code), just run:
+```shell
+node index.js ./sequence.json
+```
+
+Using `npm start` will also conveniently run that exact same command.
+
+This will launch the process, and it will remain running as a process until the full sequence completes.
+Note that if you have configured a long running process, this will mean that you will want to run it NOT on a laptop most likely, as stopping the computer will halt the process temporarily.
+
+Some sequences may include processes that run temporary web servers, in which case it is important the ports on which those web servers are running are accessible online, for which we recommend a tool like [ngrok](https://ngrok.com/) for tunneling, or running it on a production server that can accept incoming connections.
+
+> Be mindful of putting sensitive data into a JSON Sequence file, such as people's email addresses or phone numbers, that the file isn't committed to GIT and published online.
 
 ## RSF Contactables
 
