@@ -267,8 +267,21 @@ node index.js ./sequence.json
 
 Using `npm start` will also conveniently run that exact same command.
 
-This will launch the process, and it will remain running as a process until the full sequence completes.
-Note that if you have configured a long running process, this will mean that you will want to run it NOT on a laptop most likely, as stopping the computer will halt the process temporarily.
+This will launch the process, and it will remain running as a process until the full sequence completes. Once the final Operator has completed, the `rsf-runner` will write the results of it to an `output.json` in the same directory as its running in.
+
+While the sequence is running, logs of its progress and operations will be written to the terminal its running in prefixed with the `id` of the Operator its currently running, like the following:
+```shell
+...
+rsf-response-for-each: Creating temporary directory for operator
+rsf-response-for-each: Writing dependencies spec to file
+rsf-response-for-each: Writing operator code to file
+rsf-response-for-each: Installing dependencies
+rsf-response-for-each: Writing operator input to JSON file
+rsf-response-for-each: Executing operator...
+...
+```
+
+> Note that if you have configured a long running process, this will mean that you will want to run it NOT on a laptop most likely, as stopping the computer will halt the process temporarily.
 
 Some sequences may include processes that run temporary web servers, in which case it is important the ports on which those web servers are running are accessible online, for which we recommend a tool like [ngrok](https://ngrok.com/) for tunneling, or running it on a production server that can accept incoming connections.
 
