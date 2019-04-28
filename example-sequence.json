@@ -1,9 +1,22 @@
 [
     {
-        "id": "addup",
-        "description": "Add numbers in an array",
+        "id": "addup-configure-collect-responses",
+        "description": "Add numbers in an array and produce an rsf-collect-responses configuration",
         "language": "node",
         "version": "10.15.1",
+        "contract": {
+            "needs": ["number"],
+            "gives": {
+                "max_time": "number",
+                "prompt": "string",
+                "max_responses": "number",
+                "participants_config": [{
+                    "id": "string",
+                    "name": "string",
+                    "type": "string"
+                }]
+            }
+        },
         "dependencies_file": {
             "dependencies": {
                 "rsf-reader-writer": "^0.0.2"
@@ -16,6 +29,23 @@
         "description": "Gather input from people based on a prompt",
         "language": "node",
         "version": "10.15.1",
+        "contract": {
+            "needs": {
+                "max_time": "number",
+                "prompt": "string",
+                "max_responses": "number",
+                "participants_config": [{
+                    "id": "string",
+                    "name": "string",
+                    "type": "string"
+                }]
+            },
+            "gives": [{
+                "text": "string",
+                "id": "string",
+                "timestamp": "number"
+            }]
+        },
         "dependencies_file": {
             "dependencies": {
                 "rsf-collect-responses": "^0.0.25"

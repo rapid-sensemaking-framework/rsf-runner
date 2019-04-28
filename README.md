@@ -90,9 +90,9 @@ An operator can do whatever it takes to ingest and coordinate this human input, 
 
 At the time of writing, two operators of interest have been developed, that are easily made to be compatible with one another.
 - [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses)
-    - for a prompt, collect statements numbering up to a given maximum from a list of participants
+    - for a prompt, collect statements numbering up to a given maximum (or unlimited) from a list of participants
 - [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each)
-    - for a list/array of statements, collect a response or vote (from a limited number of valid options) for each from a list of participants
+    - for a list/array of statements, collect a response or vote (from a limited number of valid options, or unlimited) for each from a list of participants
 
 If writing an operator in `node`, a convenience library has been written, called [rsf-reader-writer](https://github.com/rapid-sensemaking-framework/rsf-reader-writer). Check it out for its super simple API for reading the input and writing the output.
 
@@ -113,11 +113,67 @@ in order to be compatible to run properly in the `rsf-runner` sequence runner.
 
 `language`: `String`, which language is this operator implemented in. Supported languages so far: `node`, `rust`
 
-`version`: `String`, which version of the language does this require
+`version`: `String`, (NOT IN USE YET) which version of the language does this require
+
+`contract`: `Object`, the specification of what this operator needs as input, and gives as output
+
+`contract.needs`: `JSON`, array or object, valid JSON data defining the shape and type of the data needed as input
+
+`contract.gives`: `JSON`, array or object, valid JSON data defining the shape and type of the data this will output
 
 `dependencies_file`: `String | Object`, the full data required to specify dependencies for the code file. In node this is `package.json` data, rust this is `Cargo.toml` data, etc.
 
 `code_file`: `String`, the actual code representing the primary logic of the operator. Can rely heavily on dependency imports. Gets written to a file, then run.
+
+### Example
+
+As an example, here is the JSON for a `node` based operator, that takes in an array of numbers, adds them all together,
+and outputs a configuration suitable for consumption by [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses).
+
+```json
+{
+        "id": "addup-configure-collect-responses",
+        "description": "Add numbers in an array and produce an rsf-collect-responses configuration",
+        "language": "node",
+        "version": "10.15.1",
+        "contract": {
+            "needs": ["number"],
+            "gives": {
+                "max_time": "number",
+                "prompt": "string",
+                "max_responses": "number",
+                "participants_config": [{
+                    "id": "string",
+                    "name": "string",
+                    "type": "string"
+                }]
+            }
+        },
+        "dependencies_file": {
+            "dependencies": {
+                "rsf-reader-writer": "^0.0.2"
+            }
+        },
+        "code_file": "const { readInput, writeOutput } = require('rsf-reader-writer');const input = readInput(__dirname);const result = input.reduce((memo, val) => memo + val, 0);writeOutput(__dirname, {max_time: 30000, prompt: `hi, please offer up to ${result} ideas`, max_responses: result, participants_config: [{ id: '+12223334444', name: 'Somebody Lastname', type: 'phone' }]});"
+    }
+```
+
+So if we wrote `input.json` to the file system as the following:
+```json
+[1, 2, 3]
+```
+This operator would take that value in, add up the numbers, and output the following to `output.json`
+```json
+{
+    max_time: 30000,
+    prompt: `hi, please offer up to 6 ideas`,
+    max_responses: 6,
+    participants_config: [{ id: '+12223334444', name: 'Somebody Lastname', type: 'phone' }]
+}
+```
+The places where `6` appears in the JSON are places where the value transformed from the input are placed.
+
+See the full example in [example-sequence.json](./example-sequence.json).
 
 **Todos**
 - [ ] validate that the languages (and their versions) specified in a sequence JSON file are all present on the device, and available in the PATH, before running the sequence
