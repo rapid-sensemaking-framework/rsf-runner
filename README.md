@@ -5,7 +5,7 @@ Welcome to the Rapid Sensemaking Framework ecosystem entry point!
 
 ## What Is The "Rapid Sensemaking Framework"?
 
-The rapid sensemaking framework is a set of tools designed to facilitate human conversation, ideation, and reasoning at a large scale.
+The rapid sensemaking framework is a set of tools designed to facilitate human conversation, ideation, reasoning, and decision taking at a large scale.
 
 Common processes for gathering human expressions (be they ideas, questions, claims, votes, edits, etc) are encoded as pluggable open-source modules that can reach across the various digital devices and applications we commonly use.
 
