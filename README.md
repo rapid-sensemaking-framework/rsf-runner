@@ -295,8 +295,55 @@ Some sequences may include processes that run temporary web servers, in which ca
 
 ## RSF Contactables
 
+Contactables are at the heart of the Rapid Sensemaking Framework. They represent a way to open up bi-directional channels of communication between a "bot"/operator, and a human, represented in the most basic form of digital communication, strings of text.
+
+A Contactable represents the idea that the Operator can "hear" a person, and a person can "hear" an Operator. Thus, the API for a Contactable is literally as simple in `node` as `.speak()`, `.listen()`. The full API will be defined soon.
+
+Each Contactable will represent an ability to bi-directionally communicate with a human, via the same API, independent of what technology and protocol is carrying the communications.
+
+Configurations for people will be given as arrays in `partipantsConfig`, and the Operators will carry out their operations, independent of what channels they are communicating via, thus enabling the full cross-platform cross-protocol solution.
+
+A `personConfig` object will be at a minimum something like:
+```json
+{
+    "type": "phone",
+    "id": "+12223334444"
+}
+```
+`"name"` is treated as an optional property
+
+At the time of writing, Operators that use Contactables include [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses) and [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each).
+
+### Implementations So Far
+
+[rsf-contactable](https://github.com/rapid-sensemaking-framework/rsf-contactable) is the main source of information on implemented carrier types, but here is a short and simple list:
+
+- [rsf-textable](https://github.com/rapid-sensemaking-framework/rsf-textable) implements a texting carrier, via the [Twilio] APIs
+    - the `type` to give as a `personConfig` JSON object is simply `phone` and the number must be formatted '+12223334444' (North American)
+
+### Contactable API Specification
+
+Please write other Contactable carriers, simply conforming to this minimal API!
+To get them fully implemented, please submit a PR to [rsf-contactable](https://github.com/rapid-sensemaking-framework/rsf-contactable).
+
+#### `constructor(id, name)`
+
+`id` : `String`, this value should represent the full information required to contact a person via the type of carrier it is over. For example, if `type` is `phone`, then `id` should be of the format `+12223334444`, but if `type` is `email` then `id` should be a valid email, e.g. `person@somesite.com`
+
+`name` : `String`, optional, a name which can be used throughout the Operators at times to address the person in a more congenial way, during communications with them, if appropriate.
+
+#### `.speak(text: String)`
+Send a string of text to the person represented by the given Contactable.
+
+#### `.listen(callback(text: String))`
+Set a function which will be called any time that the person represented sends a string of text back to the Operator.
 
 
+#### `.id` : `String`
+The `id` of the person given to the `constructor` function.
+
+#### `.name` : `String`
+The `name` of the person given to the `constructor` function.
 
 
 ## How To Use & Getting Started
