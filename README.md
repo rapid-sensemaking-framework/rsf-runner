@@ -20,6 +20,8 @@ Inspirations and related projects include the likes of
     - capturing individual thinking, revealing the group perspective, all in real-time. Collaborative decision making.
 - [All Our Ideas](https://www.allourideas.org/)
     - start with a question and some seed ideas and create a "wiki survey". The best ideas bubble to the top.
+- [Stormz](https://stormz.me)
+    - enables you to design and facilitate collective intelligence sessions to test participant's knowledge, foster meaningful conversations, co-create solutions and make informed decisions.
 - [Codigital](https://www.codigital.com/)
     - "Real-Time Ideas Engine". For large groups to generate, prioritize and refine ideas.
 - [Loomio](https://www.loomio.org/)
@@ -43,7 +45,7 @@ At the moment, no graphical user interface exists for the configuration process.
 
 For any good "conversation", there is always a frame. The conversation, at least loosely, has a direction that the people who will participate in it are agreeable to and interested in.
 
-So someone who has a frame for a conversation, and wants to foster engagement pulls from a selection of available recipes for a social process, and stitches them together into a beautifully crafted flow. Things that this person would be tuning could include amount of time available for each part of the process.
+So someone who has a frame for a conversation, and wants to foster engagement pulls from a selection of available recipes for a social process, and stitches them together into a beautifully crafted flow. Things that this person would be tuning could include amount of time available for each part of the process. Loomio includes some wonderful [help text explaining best practices](https://help.loomio.org/en/user_manual/getting_started/decision_tools/) for using the powerful tools in the decision/polling toolbox of Loomio.
 
 Once they draft the flow, they setup either an opt-in process where participants will select themselves, or if they have verbal or written consent via a personal connection, they could input each participant. To input a participant just requires adding the relevant info for the contact method they want to connect via, such as email, text, or something else.
 
