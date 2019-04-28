@@ -165,10 +165,10 @@ So if we wrote `input.json` to the file system as the following:
 This operator would take that value in, add up the numbers, and output the following to `output.json`
 ```json
 {
-    max_time: 30000,
-    prompt: `hi, please offer up to 6 ideas`,
-    max_responses: 6,
-    participants_config: [{ id: '+12223334444', name: 'Somebody Lastname', type: 'phone' }]
+    "max_time": 30000,
+    "prompt": "hi, please offer up to 6 ideas",
+    "max_responses": 6,
+    "participants_config": [{ "id": "+12223334444", "name": "Somebody Lastname", "type": "phone" }]
 }
 ```
 The places where `6` appears in the JSON are places where the value transformed from the input are placed.
