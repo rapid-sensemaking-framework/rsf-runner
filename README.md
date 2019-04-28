@@ -40,6 +40,8 @@ The basic tenets are
 
 Apart from a few integrations, such as ones that Loomio has with Slack, these platforms require participants to join a new platform, and familiarize with a new tool. The RSF assumes the opposite, and brings the conversation to an already familiar space to participants: a chat platform they're already using. The process designer can even specify different people as reachable on DIFFERENT platforms, and the process can still be conducted.
 
+
+
 ## Non-technical Overview
 At the moment, no graphical user interface exists for the configuration process. Until one does, let's paint a picture of what that would be like.
 
@@ -57,9 +59,13 @@ Ideally, a live dashboard of events taking place in the process, and results com
 
 Once every step of the process has completed, the final results will be saved to the computer that was hosting the process, though they could also be uploaded somewhere digitally available, or posted into a database for longevity.
 
+
+
 ## Principles
 
 The tools should offer participants in processes as much transparency into the process as makes sense for the use case. In most cases, all the participants should have the results of the entire process, rather than constrict the results to the facilitator. The process should benefit everyone.
+
+
 
 ## Technical Overview
 The rsf-runner consumes a JSON file, which will be described in [RSF Operators](#rsf-operators).
@@ -81,6 +87,9 @@ With those results, it will either pass them as an input into the next step in t
 This `output.json` is where the final results can be found.
 
 The input for the initial operator in the sequence should be written into an `input.json` file which is sitting in the root directory in which the main process is being run.
+
+
+
 
 ## RSF Operators
 
@@ -176,7 +185,9 @@ The places where `6` appears in the JSON are places where the value transformed 
 See the full example in [example-sequence.json](./example-sequence.json).
 
 **Todos**
-- [ ] validate that the languages (and their versions) specified in a sequence JSON file are all present on the device, and available in the PATH, before running the sequence
+- [ ] programmatically validate that the languages (and their versions) specified in a sequence JSON file are all present on the device, and available in the PATH, before running the sequence
+
+
 
 
 ## RSF Sequences
@@ -232,7 +243,24 @@ An RSF Sequence is encoded into a JSON file, making it super portable, savable, 
 
 It is especially important the `contract.gives` property of one Operator, matches the `contract.needs` property of the following Operator, identically.
 
-In order to run a sequence, the file should be sitting in the filesystem on your computer where you also have the code for `rsf-runner` sitting. To boot it, assuming the file name is `sequence.json` (and its in the same folder as rsf-runner code), just run:
+In order to run a sequence, the file should be sitting in the filesystem on your computer where you also have the code for `rsf-runner` sitting. Obviously, the first Operator has no Operator that precedes it, so it needs to be given an input.
+Prior to trying to run a Sequence it is important to write a file named `input.json` to the `rsf-runner` folder.
+The file should contain valid JSON data that matches the `contract.needs` property of the FIRST Operator.
+Say that `contract.needs` for the first Operator is:
+```json
+["number"]
+```
+Then `input.json` could look like:
+```json
+[1, 2, 3]
+```
+or
+```json
+[5, 6, 7, 8, 9]
+```
+etc.
+
+Now, with `input.json` in place: to boot it, assuming the file name is `sequence.json` (and its in the same folder as rsf-runner code), just run:
 ```shell
 node index.js ./sequence.json
 ```
@@ -246,10 +274,19 @@ Some sequences may include processes that run temporary web servers, in which ca
 
 > Be mindful of putting sensitive data into a JSON Sequence file, such as people's email addresses or phone numbers, that the file isn't committed to GIT and published online.
 
+
+**Todos**
+- [ ] programmatically validate before running the sequence that the `contract.gives` property of each Operator, matches identically to the `contract.needs` property of the following Operator
+
+
+
 ## RSF Contactables
 
 
-## How To Use
+
+
+
+## How To Use & Getting Started
 
 - setting up Twilio
 - setting up `.env`
