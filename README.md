@@ -24,6 +24,11 @@ Inspirations and related projects include the likes of
     - "Real-Time Ideas Engine". For large groups to generate, prioritize and refine ideas.
 - [Loomio](https://www.loomio.org/)
     - helps people have discussions and make decisions together
+- [Assembl](https://bluenove.com/en/offers/assembl/)
+    - massive collective intelligence is the capacity to mobilize communities on a large scale (hundreds and thousands of participants) around key stakes and challenges to co-create new solutions in a short space of time
+- [IdeaLoom](https://www.idealoom.org/)
+    - sister project to Assembl
+    - allows large communities to hold a meaningful conversation at scale, reach a common understanding, and develop solutions beyond what each participant could have envisioned
 
 The basic tenets are
 - ideation
