@@ -347,8 +347,14 @@ The `name` of the person given to the `constructor` function.
 
 
 ## How To Use & Getting Started
+It is possible to do free of charge testing with Twilio, it just appends a little message into the text messages that it sends, which is fine for testing.
 
-- setting up Twilio
-- setting up `.env`
-- setting up a `sequence.json`
-- running an rsf-sequence
+- [setting up Twilio](https://www.twilio.com/docs/sms/quickstart/node#sign-up-for-twilio-and-get-a-twilio-phone-number)
+- make a copy of `.example.env` and rename it `.env`, fill in the values with those from Twilio
+    - To see what they each mean, see https://github.com/rapid-sensemaking-framework/rsf-textable#environment-variables
+- set up [ngrok](https://ngrok.com/) and run it as `./ngrok http 1337`
+- make a copy of `example-sequence.json` and rename it `sequence.json`
+- change the value `+12223334444` in `sequence.json` to your phone number
+- run `npm start`
+- complete the process as it texts you!
+- check out `output.json` once the process completes
