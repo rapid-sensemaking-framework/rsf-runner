@@ -110,6 +110,11 @@ At the time of writing, two operators of interest have been developed, that are 
     - for a prompt, collect statements numbering up to a given maximum (or unlimited) from a list of participants
 - [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each)
     - for a list/array of statements, collect a response or vote (from a limited number of valid options, or unlimited) for each from a list of participants
+    
+Lots of other Operators have already been considered for implementation, for example
+- rsf-pairwise-comparison -> input: a list of statements, process: have all participants choose preferences between pairs of statements, return the list of compared/ranked results.
+
+There is a template for creating new Operators! It has the basics ready and set to go, so give it a try: https://github.com/rapid-sensemaking-framework/rsf-operator-template
 
 If writing an operator in `node`, a convenience library has been written, called [rsf-reader-writer](https://github.com/rapid-sensemaking-framework/rsf-reader-writer). Check it out for its super simple API for reading the input and writing the output.
 
