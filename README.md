@@ -114,6 +114,9 @@ At the time of writing, two operators of interest have been developed, that are 
     - input: a list of statements, process: have all participants choose preferences between pairs of statements, return the list of compared/ranked results.
     
 Lots of other Operators have already been considered for implementation, for example
+- rsf-sort-full-list
+- rsf-dot-vote
+- rsf-pick-from-full-list
 - rsf-gather-participants
     - input: nothing, process: spin up a web server with a form and collect peoples contact info that opt in to participate, output: a list of Contactable participantConfigs
 - rsf-share-results
