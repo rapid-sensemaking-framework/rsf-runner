@@ -342,7 +342,7 @@ At the time of writing, Operators that use Contactables include [rsf-pairwise-co
 
 - [rsf-textable](https://github.com/rapid-sensemaking-framework/rsf-textable) implements a texting carrier, via the [Twilio](https://www.twilio.com/) APIs
     - the `type` to give as a `personConfig` JSON object is simply `phone` and the number must be formatted '+12223334444' (North American)
-- [rsf-mattermostable](https://github.com/rapid-sensemaking-framework/rsf-mattermostable) implements a [Mattermost]() carrier, via the Mattermost APIs
+- [rsf-mattermostable](https://github.com/rapid-sensemaking-framework/rsf-mattermostable) implements a [Mattermost](https://mattermost.com/) carrier, via the Mattermost APIs
     - the `type` to give as a `personConfig` JSON object is simply `mattermost` and the format must be like 'username@https://mattermost-server.com'
 
 ### Contactable API Specification
