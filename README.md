@@ -320,7 +320,7 @@ A `personConfig` object will be at a minimum something like:
 ```
 `"name"` is treated as an optional property
 
-At the time of writing, Operators that use Contactables include [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses) and [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each).
+At the time of writing, Operators that use Contactables include [rsf-pairwise-comparison](https://github.com/rapid-sensemaking-framework/rsf-pairwise-comparison), [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses) and [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each).
 
 ### Implementations So Far
 
@@ -328,6 +328,8 @@ At the time of writing, Operators that use Contactables include [rsf-collect-res
 
 - [rsf-textable](https://github.com/rapid-sensemaking-framework/rsf-textable) implements a texting carrier, via the [Twilio](https://www.twilio.com/) APIs
     - the `type` to give as a `personConfig` JSON object is simply `phone` and the number must be formatted '+12223334444' (North American)
+- [rsf-mattermostable](https://github.com/rapid-sensemaking-framework/rsf-mattermostable) implements a [Mattermost]() carrier, via the Mattermost APIs
+    - the `type` to give as a `personConfig` JSON object is simply `mattermost` and the format must be like 'username@https://mattermost-server.com'
 
 ### Contactable API Specification
 
