@@ -110,8 +110,22 @@ At the time of writing, two operators of interest have been developed, that are 
     - for a prompt, collect statements numbering up to a given maximum (or unlimited) from a list of participants
 - [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each)
     - for a list/array of statements, collect a response or vote (from a limited number of valid options, or unlimited) for each from a list of participants
+- [rsf-pairwise-comparison](https://github.com/rapid-sensemaking-framework/rsf-pairwise-comparison)
+    - input: a list of statements, process: have all participants choose preferences between pairs of statements, return the list of compared/ranked results.
+    
+Lots of other Operators have already been considered for implementation, for example
+- rsf-sort-full-list
+- rsf-dot-vote
+- rsf-pick-from-full-list
+- rsf-gather-participants
+    - input: nothing, process: spin up a web server with a form and collect peoples contact info that opt in to participate, output: a list of Contactable participantConfigs
+- rsf-share-results
+    - input: anything + participantConfigs, process: share the input, which are likely results from a process, with people
 
-If writing an operator in `node`, a convenience library has been written, called [rsf-reader-writer](https://github.com/rapid-sensemaking-framework/rsf-reader-writer). Check it out for its super simple API for reading the input and writing the output.
+
+There is a template for creating new Operators! It has the basics ready and set to go, so give it a try: https://github.com/rapid-sensemaking-framework/rsf-operator-template
+
+If writing an operator in `node`, a convenience library has been written, called [rsf-reader-writer](https://github.com/rapid-sensemaking-framework/rsf-reader-writer). Check it out for its super simple API for reading the input and writing the output. It is included by default in the rsf-operator-template.
 
 RSF Operators are modules that can be run from the command line, that follow a certain pattern of reading a file with a specific name `input.json` as an input, running as long as it needs to transform that input into a desired output, and then writing that output to a JSON file with a specific name `output.json`, and exiting the process. At the fundamentals, that is it. Obviously, infinitely diverse functionality can be written that adheres to those simple principles. The only requirements are a file system and the ability to run a process thread.
 
