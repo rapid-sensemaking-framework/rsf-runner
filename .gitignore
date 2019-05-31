@@ -2,6 +2,7 @@ input.json
 output.json
 sequence.json
 sequence.1.json
+process_outputs
 
 # Logs
 logs
