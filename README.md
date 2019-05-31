@@ -112,13 +112,13 @@ At the time of writing, two operators of interest have been developed, that are 
     - for a list/array of statements, collect a response or vote (from a limited number of valid options, or unlimited) for each from a list of participants
 - [rsf-pairwise-comparison](https://github.com/rapid-sensemaking-framework/rsf-pairwise-comparison)
     - input: a list of statements, process: have all participants choose preferences between pairs of statements, return the list of compared/ranked results.
+- [rsf-collect-participants](https://github.com/rapid-sensemaking-framework/rsf-collect-participants)
+    - input: nothing, process: spin up a web server with a form and collect peoples contact info that opt in to participate, output: a list of Contactable participantConfigs
     
 Lots of other Operators have already been considered for implementation, for example
 - rsf-sort-full-list
 - rsf-dot-vote
 - rsf-pick-from-full-list
-- rsf-gather-participants
-    - input: nothing, process: spin up a web server with a form and collect peoples contact info that opt in to participate, output: a list of Contactable participantConfigs
 - rsf-share-results
     - input: anything + participantConfigs, process: share the input, which are likely results from a process, with people
 
@@ -344,6 +344,11 @@ At the time of writing, Operators that use Contactables include [rsf-pairwise-co
     - the `type` to give as a `personConfig` JSON object is simply `phone` and the number must be formatted '+12223334444' (North American)
 - [rsf-mattermostable](https://github.com/rapid-sensemaking-framework/rsf-mattermostable) implements a [Mattermost](https://mattermost.com/) carrier, via the Mattermost APIs
     - the `type` to give as a `personConfig` JSON object is simply `mattermost` and the format must be like 'username@https://mattermost-server.com'
+
+Implementations under consideration:
+- rsf-messenger (fb)
+- rsf-telegram
+- rsf-ssb (secure scuttlebutt)
 
 ### Contactable API Specification
 
