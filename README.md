@@ -108,12 +108,14 @@ An operator can do whatever it takes to ingest and coordinate this human input, 
 At the time of writing, two operators of interest have been developed, that are easily made to be compatible with one another.
 - [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses)
     - for a prompt, collect statements numbering up to a given maximum (or unlimited) from a list of participants
+    - ![rsf collect responses v0.0.31 screenshot](./screenshots/rsf-collect-responses-v0.0.31.png)
 - [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each)
     - for a list/array of statements, collect a response or vote (from a limited number of valid options, or unlimited) for each from a list of participants
 - [rsf-pairwise-comparison](https://github.com/rapid-sensemaking-framework/rsf-pairwise-comparison)
     - input: a list of statements, process: have all participants choose preferences between pairs of statements, return the list of compared/ranked results.
 - [rsf-collect-participants](https://github.com/rapid-sensemaking-framework/rsf-collect-participants)
     - input: nothing, process: spin up a web server with a form and collect peoples contact info that opt in to participate, output: a list of Contactable participantConfigs
+    - ![rsf collect participants v0.0.13 screenshot](./screenshots/rsf-collect-participants-v0.0.13.png)
     
 Lots of other Operators have already been considered for implementation, for example
 - rsf-sort-full-list
@@ -349,6 +351,10 @@ Implementations under consideration:
 - rsf-messenger (fb)
 - rsf-telegram
 - rsf-ssb (secure scuttlebutt)
+
+### Challenges
+
+The biggest challenge so far encountered is rate limits on APIs. This constrains the number of messages that can be sent by a "bot" within a certain period of time, limited differently depending on the system. If the contactable implementation doesn't take that into account, some messages will be dropped, which breaks the viability of the system. It is important to research the rate limits of a given system and make sure that an implementation conforms to them.
 
 ### Contactable API Specification
 
