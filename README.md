@@ -325,7 +325,7 @@ A Contactable represents the idea that the Operator can "hear" a person, and a p
 
 Each Contactable will represent an ability to bi-directionally communicate with a human, via the same API, independent of what technology and protocol is carrying the communications.
 
-Configurations for people will be given as arrays in `partipantsConfig`, and the Operators will carry out their operations, independent of what channels they are communicating via, thus enabling the full cross-platform cross-protocol solution.
+Configurations for people will be given as arrays in `participantsConfig`, and the Operators will carry out their operations, independent of what channels they are communicating via, thus enabling the full cross-platform cross-protocol solution.
 
 A `personConfig` object will be at a minimum something like:
 ```json
@@ -337,6 +337,8 @@ A `personConfig` object will be at a minimum something like:
 `"name"` is treated as an optional property
 
 At the time of writing, Operators that use Contactables include [rsf-pairwise-comparison](https://github.com/rapid-sensemaking-framework/rsf-pairwise-comparison), [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses) and [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each).
+
+There is a module that collect a `participantsConfig` array as an output, which can then be fed in to another module. That is [rsf-collect-participants](https://github.com/rapid-sensemaking-framework/rsf-collect-participants).
 
 ### Implementations So Far
 
