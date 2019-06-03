@@ -352,6 +352,7 @@ There is a module that collect a `participantsConfig` array as an output, which 
 Implementations under consideration:
 - rsf-messenger (fb)
 - rsf-telegram
+- rsf-emailable
 - rsf-ssb (secure scuttlebutt)
 
 ### Challenges
