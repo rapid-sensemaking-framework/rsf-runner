@@ -220,7 +220,7 @@ Sequences are called sequences because they are a series of Operators placed int
 
 While you could technically create a sequence of one and only one Operator, those will be the less interesting of the use cases than ones that string many operators together into a longer flow. Even Operators implemented in different languages are able to be strung together.
 
-An RSF Sequence is encoded into a JSON file, making it super portable, savable, and shareable. It is simply an array of RSF Operator JSON objects. The following is an example with abbreviations, the full copy of which can be seen in [example-sequence.json](./example-sequence.json).
+An RSF Sequence is encoded into a JSON file, making it super portable, saveable, and shareable. It is simply an array of RSF Operator JSON objects. The following is an example with abbreviations, the full copy of which can be seen in [example-sequence.json](./example-sequence.json).
 
 ```json
 [
