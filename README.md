@@ -6,7 +6,6 @@ Welcome to the Rapid Sensemaking Framework ecosystem entry point!
 - [Skip to `Principles`](#principles)
 - [Skip to `Technical Overview`](#technical-overview)
 - [Skip to `rsf-operators`](#rsf-operators)
-- [Skip to `rsf-sequences`](#rsf-sequences)
 - [Skip to `rsf-contactables`](#rsf-contactables)
 
 
