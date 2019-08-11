@@ -149,6 +149,7 @@ There is a module that collect a `participantsConfig` array as an output, which 
 Implementations under consideration:
 - rsf-messenger (fb)
 - rsf-telegram
+- rsf-emailable
 - rsf-ssb (secure scuttlebutt)
 
 ### Challenges
@@ -168,6 +169,9 @@ To get them fully implemented, please submit a PR to [rsf-contactable](https://g
 
 #### `.speak(text: String)`
 Send a string of text to the person represented by the given Contactable.
+
+**Todo**
+- [ ] update .speak API so that it returns a promise that resolves when confirmation that the message has successfully been sent and received occurs. this will allow finer control of flow important in modules.
 
 #### `.listen(callback(text: String))`
 Set a function which will be called any time that the person represented sends a string of text back to the Operator.
