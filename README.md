@@ -85,7 +85,7 @@ Operators are called operators because they perform operations. These operations
 
 An operator can do whatever it takes to ingest and coordinate this human input, which will very likely involve standing up web servers, and other connection/protocol variants.
 
-At the time of writing, two operators of interest have been developed, that are easily made to be compatible with one another.
+At the time of writing, just a few operators of interest have been developed, that are easily made to be compatible with one another.
 - [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/noflo-rapid-sensemaking/blob/master/components/CollectResponses.js)
     - for a prompt, collect statements numbering up to a given maximum (or unlimited) from a list of participants
     - ![rsf collect responses v0.0.31 screenshot](./screenshots/rsf-collect-responses-v0.0.31.png)
