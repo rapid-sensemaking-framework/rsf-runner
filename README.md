@@ -104,13 +104,11 @@ Lots of other Operators have already been considered for implementation, for exa
 - rsf-share-results
     - input: anything + participantConfigs, process: share the input, which are likely results from a process, with people
 
-RSF Operators are modules that can be run from the command line, that follow a certain pattern of reading a file with a specific name `input.json` as an input, running as long as it needs to transform that input into a desired output, and then writing that output to a JSON file with a specific name `output.json`, and exiting the process. At the fundamentals, that is it. Obviously, infinitely diverse functionality can be written that adheres to those simple principles. The only requirements are a file system and the ability to run a process thread.
-
-The idea is that each operator should clearly define what properties or values it expects from input,
-and what properties or values it returns as  output, if its successful.
+The idea is that each operator should clearly define what properties or values it expects as input,
+and what properties or values it returns as output, if its successful.
 
 By doing so, RSF Operators can build up as a library over time, and where outputs of one operator match the inputs of another,
-those operators can be strung together into an RSF Sequence. They could start to be combined in many different orders and in many different ways.
+those operators can be strung together into more complex sequences. They could start to be combined in many different orders and in many different ways. For example, the output of `CollectResponses` feeds nicely into the `statements` input of `ResponseForEach`.
 
 ## RSF Contactables
 
