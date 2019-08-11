@@ -8,7 +8,6 @@ Welcome to the Rapid Sensemaking Framework ecosystem entry point!
 - [Skip to `rsf-operators`](#rsf-operators)
 - [Skip to `rsf-sequences`](#rsf-sequences)
 - [Skip to `rsf-contactables`](#rsf-contactables)
-- [Skip to `How to Use & Getting Started`](#how-to-use--getting-started)
 
 
 ## What Is The "Rapid Sensemaking Framework"?
@@ -88,14 +87,14 @@ Operators are called operators because they perform operations. These operations
 An operator can do whatever it takes to ingest and coordinate this human input, which will very likely involve standing up web servers, and other connection/protocol variants.
 
 At the time of writing, two operators of interest have been developed, that are easily made to be compatible with one another.
-- [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses)
+- [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/noflo-rapid-sensemaking/blob/master/components/CollectResponses.js)
     - for a prompt, collect statements numbering up to a given maximum (or unlimited) from a list of participants
     - ![rsf collect responses v0.0.31 screenshot](./screenshots/rsf-collect-responses-v0.0.31.png)
-- [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each)
+- [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/noflo-rapid-sensemaking/blob/master/components/ResponseForEach.js)
     - for a list/array of statements, collect a response or vote (from a limited number of valid options, or unlimited) for each from a list of participants
-- [rsf-pairwise-comparison](https://github.com/rapid-sensemaking-framework/rsf-pairwise-comparison)
+- [rsf-pairwise-comparison](https://github.com/rapid-sensemaking-framework/noflo-rapid-sensemaking/blob/master/components/PairwiseComparison.js)
     - input: a list of statements, process: have all participants choose preferences between pairs of statements, return the list of compared/ranked results.
-- [rsf-collect-participants](https://github.com/rapid-sensemaking-framework/rsf-collect-participants)
+- [rsf-collect-participants](https://github.com/rapid-sensemaking-framework/noflo-rapid-sensemaking/blob/master/components/CollectParticipants.js)
     - input: nothing, process: spin up a web server with a form and collect peoples contact info that opt in to participate, output: a list of Contactable participantConfigs
     - ![rsf collect participants v0.0.13 screenshot](./screenshots/rsf-collect-participants-v0.0.13.png)
     
@@ -133,9 +132,9 @@ A `personConfig` object will be at a minimum something like:
 ```
 `"name"` is treated as an optional property
 
-At the time of writing, Operators that use Contactables include [rsf-pairwise-comparison](https://github.com/rapid-sensemaking-framework/rsf-pairwise-comparison), [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/rsf-collect-responses) and [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/rsf-response-for-each).
+At the time of writing, Operators that use Contactables include [rsf-pairwise-comparison](https://github.com/rapid-sensemaking-framework/noflo-rapid-sensemaking/blob/master/components/PairwiseComparison.js), [rsf-collect-responses](https://github.com/rapid-sensemaking-framework/noflo-rapid-sensemaking/blob/master/components/CollectResponses.js) and [rsf-response-for-each](https://github.com/rapid-sensemaking-framework/noflo-rapid-sensemaking/blob/master/components/ResponseForEach.js).
 
-There is a module that collect a `participantsConfig` array as an output, which can then be fed in to another module. That is [rsf-collect-participants](https://github.com/rapid-sensemaking-framework/rsf-collect-participants).
+There is a module that collect a `participantsConfig` array as an output, which can then be fed in to another module. That is [rsf-collect-participants](https://github.com/rapid-sensemaking-framework/noflo-rapid-sensemaking/blob/master/components/CollectParticipants.js).
 
 ### Implementations So Far
 
@@ -182,11 +181,3 @@ The `id` of the person given to the `constructor` function.
 
 #### `.name` : `String`
 The `name` of the person given to the `constructor` function.
-
-
-## How To Use & Getting Started
-It is possible to do free of charge testing with Twilio, it just appends a little message into the text messages that it sends, which is fine for testing.
-
-- [setting up Twilio](https://www.twilio.com/docs/sms/quickstart/node#sign-up-for-twilio-and-get-a-twilio-phone-number)
-- set up [ngrok](https://ngrok.com/) and run it as `./ngrok http 1337`
-- change the value `+12223334444` in `sequence.json` to your phone number
