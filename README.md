@@ -172,6 +172,9 @@ Send a string of text to the person represented by the given Contactable.
 #### `.listen(callback(text: String))`
 Set a function which will be called any time that the person represented sends a string of text back to the Operator.
 
+#### `.stopListening()`
+Calling this will prevent any and all callbacks passed to `listen` from firing again. Should be called as cleanup after use.
+
 
 #### `.id` : `String`
 The `id` of the person given to the `constructor` function.
